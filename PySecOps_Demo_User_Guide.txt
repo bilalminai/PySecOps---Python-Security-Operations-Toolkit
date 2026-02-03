@@ -1,0 +1,336 @@
+================================================================================
+                    PySecOps Demo - User Guide & Feature Overview
+================================================================================
+                        Your Python Security Operations Toolkit
+                              By PySecOps Team
+================================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. Overview
+2. How to Run
+3. Requirements & Dependencies
+4. Main Menu
+5. Feature 1: Network Scanner
+6. Feature 2: Web Scraper
+7. Feature 3: Web Reconnaissance
+8. Feature 4: Password Generator
+9. Feature 5: Clickjacking Tester
+10. Feature 6: File Integrity Checker
+11. Feature 7: Phishing Link Scanner
+12. Feature 8: File Scanner (Keyword)
+13. Tips & Notes
+
+================================================================================
+1. OVERVIEW
+================================================================================
+
+PySecOps Demo is a single-file application that brings together all security
+and reconnaissance tools from the PySecOps project. It provides a unified
+menu-driven interface for:
+
+  - Network scanning and host/port discovery
+  - Web scraping and information gathering
+  - Target reconnaissance (DNS, headers, technologies, subdomains)
+  - Secure password generation
+  - Clickjacking vulnerability testing
+  - File system integrity monitoring
+  - Phishing link analysis (single URL or bulk from files)
+  - File keyword scanning for suspicious content
+
+Use this guide to understand what each feature does and how to use it.
+
+================================================================================
+2. HOW TO RUN
+================================================================================
+
+  From a terminal/command prompt:
+
+    1. Navigate to the PySecOpsss folder:
+       cd "d:\D-CSF\Final Project\PySecOpsss"
+
+    2. Run the demo:
+       python demo.py
+
+  The application will show the PySecOps logo, a welcome message, and then
+  the main menu. Enter a number (1-9) to select a feature or exit.
+
+================================================================================
+3. REQUIREMENTS & DEPENDENCIES
+================================================================================
+
+  Required (core features need these):
+    - Python 3.x
+    - requests, nmap (python-nmap), beautifulsoup4, tabulate, colorama, rich
+
+  Optional (some features work better or need these):
+    - whois          → Web Scraper (domain info), Phishing Scanner (domain age)
+    - builtwith      → Web Scraper (technologies)
+    - dnspython      → Web Recon (DNS records)
+    - pyfiglet       → Fancy banners in menus
+    - watchdog       → File Integrity (live monitoring)
+    - numpy, scikit-learn → File Integrity (AI risk assessment)
+    - PyPDF2         → Phishing Scanner (extract links from PDFs)
+
+  Install common dependencies (example):
+    pip install requests python-nmap beautifulsoup4 tabulate colorama rich
+
+  Nmap (the program, not only the Python library) must be installed on your
+  system and available in PATH for the Network Scanner to work:
+    https://nmap.org/download.html
+
+  If an optional library is missing, the related feature may still run with
+  reduced functionality or skip that part (e.g. no DNS if dnspython missing).
+
+================================================================================
+4. MAIN MENU
+================================================================================
+
+  After starting demo.py you will see:
+
+    1. Network Scanner
+    2. Web Scraper
+    3. Web Reconnaissance
+    4. Password Generator
+    5. Clickjacking Tester
+    6. File Integrity Checker
+    7. Phishing Link Scanner
+    8. File Scanner (keywords)
+    9. Exit
+
+  Enter 1-8 to run a feature, or 9 to exit. After using a feature, you can
+  usually return to the main menu (option 0 or "Back" within that feature)
+  to choose another tool.
+
+================================================================================
+5. FEATURE 1: NETWORK SCANNER
+================================================================================
+
+  What it does:
+    Discovers live hosts on a network and scans for open ports and services
+    using Nmap. Supports host discovery (ping sweep, SYN, ARP, ACK) and
+    various port-scan types (TCP connect, SYN stealth, FIN, Xmas, Null, UDP,
+    version detection, OS detection, aggressive scan, zombie scan).
+
+  How to use:
+    1. From main menu, select 1 (Network Scanner).
+    2. Choose scan type:
+       - 1 = Host Scan (discover live devices)
+       - 2 = Port Scan (detailed service discovery)
+       - 3 = Full Scan (all ports, aggressive, service/version)
+       - 0 = Back to main menu
+    3. For Host Scan: pick a discovery method (1-4), then enter IP/subnet
+       (e.g. 192.168.1 or 10.0.0.0/24).
+    4. For Port Scan: pick a scan type (1-11), enter target IP. For Zombie
+       scan (11), you will be asked for the zombie host IP.
+    5. For Full Scan: enter target (e.g. 10.0.0.1 or 192.168.1).
+    6. Results are shown in a table. You can export to a .txt report when
+       prompted.
+
+  Brief:
+    Use for network mapping, finding open services, and basic recon on
+    targets. Some scan types (e.g. SYN, OS detection) may require
+    administrator/root privileges.
+
+================================================================================
+6. FEATURE 2: WEB SCRAPER
+================================================================================
+
+  What it does:
+    Fetches a given URL and collects: domain/WHOIS info, technologies
+    (via builtwith), page title, links, headings, paragraphs, meta tags,
+    possible API references, contact-like strings (emails/phones), and
+    simple weak-point hints (e.g. no HTTPS, server header exposure).
+
+  How to use:
+    1. From main menu, select 2 (Web Scraper).
+    2. Enter the full URL (e.g. https://example.com).
+    3. Wait for the tool to gather and print the information.
+    4. When asked, choose 0 to export data to a .txt file, or 1 to exit
+       (and return to main menu).
+
+  Brief:
+    Use for quick overview of a website’s structure, tech stack, and
+    visible contact/weakness indicators. Respect robots.txt and
+    terms of use when scraping.
+
+================================================================================
+7. FEATURE 3: WEB RECONNAISSANCE
+================================================================================
+
+  What it does:
+    Performs targeted recon on a domain or IP: resolves IP, fetches HTTP
+    headers, detects technologies (server, backend, CMS, frameworks,
+    security headers), optionally DNS records (A, MX, NS, TXT) and
+    subdomains (via crt.sh), and shows IP geolocation (e.g. country,
+    city, ISP).
+
+  How to use:
+    1. From main menu, select 3 (Web Reconnaissance).
+    2. Enter domain or IP (e.g. example.com or 93.184.216.34).
+    3. Review the tables (basic info, headers, technologies, geo, DNS,
+       subdomains).
+    4. Optionally export the report to a .txt file when prompted.
+    5. Choose whether to perform another recon (y) or go back to main
+       menu (n).
+
+  Brief:
+    Use for pre-assessment of a web target: infrastructure, tech stack,
+    and exposure. DNS/subdomain data depends on optional dnspython and
+    crt.sh availability.
+
+================================================================================
+8. FEATURE 4: PASSWORD GENERATOR
+================================================================================
+
+  What it does:
+    Generates a personalized password from your name, a second word, and
+    a number, with optional platform-specific keywords (e.g. Facebook,
+    Twitter, GitHub). Ensures the password meets at least "Medium"
+    strength (length and character variety).
+
+  How to use:
+    1. From main menu, select 4 (Password Generator).
+    2. Enter your name, a second word, and a number (digits only).
+    3. Enter how many characters from your name to use (min 3).
+    4. Enter the platform/account (e.g. Facebook, Email, others).
+    5. The tool generates a password and shows its strength (Strong/
+       Medium/Weak).
+    6. Choose to generate another (y) or return to main menu (n).
+
+  Brief:
+    Use for creating memorable but structured passwords. Store them in a
+    secure password manager; do not reuse the same password everywhere.
+
+================================================================================
+9. FEATURE 5: CLICKJACKING TESTER
+================================================================================
+
+  What it does:
+    Checks whether a site or a local HTML file is protected against
+    clickjacking by looking for X-Frame-Options or Content-Security-Policy
+    (frame-ancestors). Can test a live URL (remote headers) or a local
+    HTML file (meta tags / CSP in the file).
+
+  How to use:
+    1. From main menu, select 5 (Clickjacking Tester).
+    2. Choose:
+       - 1 = Global Domain Check (enter a URL).
+       - 2 = Local File Check (enter path to an HTML file).
+       - 3 = Back to main menu.
+    3. Review the result (VULNERABLE / PROTECTED) and the report table.
+    4. Optionally export the report to a .txt file.
+
+  Brief:
+    Use to verify that your (or a target) site sends proper anti-framing
+    headers or meta tags. "VULNERABLE" means the page could be embedded
+    in an iframe and used for clickjacking if combined with social
+    engineering.
+
+================================================================================
+10. FEATURE 6: FILE INTEGRITY CHECKER
+================================================================================
+
+  What it does:
+    Creates a baseline of a directory (file hashes and metadata), then
+    later checks the same directory for changes (new, modified, deleted
+    files). Can run a live monitor that reports file create/modify/delete
+    events. Uses an optional AI-style risk assessment (e.g. many
+    deletions/modifications) when numpy/scikit-learn are available.
+
+  How to use:
+    1. From main menu, select 6 (File Integrity Checker).
+    2. First time: choose 1 (Create Baseline), then enter the full path
+       to the directory to monitor.
+    3. Later: choose 2 (Check File Integrity) to compare current state
+       with the baseline. Use the same directory path as in step 2.
+    4. Optional: choose 3 (Live File Monitoring) to watch the same
+       directory in real time; press Ctrl+C to stop.
+    5. Use 0 to go back to main menu.
+
+  Brief:
+    Use to detect unauthorized file changes (e.g. on a server or
+    sensitive folder). Baseline is stored in file_baseline.json in the
+    current working directory. Live monitoring requires the "watchdog"
+    library.
+
+================================================================================
+11. FEATURE 7: PHISHING LINK SCANNER
+================================================================================
+
+  What it does:
+    Analyzes URLs for common phishing indicators: IP-only host, long URL,
+    @ in host, HTTP (no HTTPS), risky TLDs, very new domain (WHOIS age).
+    Assigns a risk score and verdict (CLEAN / SUSPICIOUS / MALICIOUS).
+    Supports single URL or bulk scan from a file (PDF, CSV, or TXT).
+
+  How to use:
+    1. From main menu, select 7 (Phishing Link Scanner).
+    2. Choose mode: 1 = Single URL, 2 = Bulk (file).
+    3. Single: paste or type the URL to scan.
+       Bulk: enter the file path (PDF, CSV, or TXT); the tool extracts
+       links and scans each.
+    4. Review the table (URL, flags, score, verdict).
+    5. Choose whether to run another scan (y) or return to main menu (n).
+
+  Brief:
+    Use to quickly triage links in emails or documents. Results are
+    heuristic-based; treat SUSPICIOUS/MALICIOUS as a reason for caution,
+    not a final verdict. Domain-age checks require the "whois" library;
+    PDF extraction requires PyPDF2.
+
+================================================================================
+12. FEATURE 8: FILE SCANNER (KEYWORD)
+================================================================================
+
+  What it does:
+    Scans a text file for a list of keywords (e.g. sensitive or
+    suspicious terms) defined in Keywords.txt in the same folder as
+    demo.py. Reports which keywords were found in the file.
+
+  How to use:
+    1. From main menu, select 8 (File Scanner).
+    2. Enter the full path to the file you want to scan.
+    3. The tool loads Keywords.txt from the PySecOpsss folder and
+       searches the file (case-insensitive).
+    4. Results list any matching keywords or report "Nothing suspicious
+       found."
+    5. Choose to scan another file (y) or return to main menu (n).
+
+  Brief:
+    Use for simple content policy checks or finding predefined
+    keywords in logs, configs, or documents. Edit Keywords.txt (one
+    keyword per line) to customize the list. The file to scan must be
+    readable as text (encoding is handled with errors='ignore').
+
+================================================================================
+13. TIPS & NOTES
+================================================================================
+
+  - Permissions: Some network scans (e.g. SYN, OS detection) need
+    administrator or root privileges. Run the script with appropriate
+    rights if you see permission or capability errors.
+
+  - Nmap: The Network Scanner requires Nmap to be installed on the
+    system and in PATH. Install from https://nmap.org if you get
+    "Nmap not found" errors.
+
+  - Ethics & legality: Use these tools only on systems and networks you
+    are authorized to test. Unauthorized scanning or access may be
+    illegal.
+
+  - Phishing results: Phishing Link Scanner uses heuristics and
+    public data (e.g. WHOIS). Treat results as guidance, not legal or
+    absolute proof of malice.
+
+  - File Integrity: The baseline (file_baseline.json) is tied to the
+    directory path you chose. Use the same path when checking
+    integrity or starting live monitoring.
+
+  - Back to menu: In most features, option "0" or "Back" returns you
+    to the main menu. Option "9" from the main menu exits the
+    application.
+
+================================================================================
+                              End of User Guide
+================================================================================

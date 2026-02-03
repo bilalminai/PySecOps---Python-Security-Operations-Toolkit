@@ -1,0 +1,253 @@
+malware
+ransomware
+spyware
+adware
+trojan
+worm
+rootkit
+keylogger
+botnet
+virus
+backdoor
+dropper
+exploit
+payload
+zero-day
+fileless
+polymorphic
+obfuscation
+packer
+steganography
+command and control
+C2
+remote access trojan
+RAT
+bootkit
+crypto miner
+infostealer
+wiper
+phishing
+spearphishing
+smishing
+vishing
+MITM
+man-in-the-middle
+SQL injection
+XSS
+cross-site scripting
+CSRF
+buffer overflow
+DLL injection
+code injection
+session hijacking
+privilege escalation
+brute force
+dictionary attack
+rainbow table
+credential stuffing
+typosquatting
+DNS poisoning
+ARP spoofing
+clickjacking
+drive-by download
+Metasploit
+Nmap
+Wireshark
+Burp Suite
+John the Ripper
+Aircrack-ng
+sqlmap
+Hydra
+Nikto
+Snort
+Suricata
+Volatility
+Cuckoo Sandbox
+Sysinternals
+Netcat
+tcpdump
+YARA
+ClamAV
+VirusTotal
+Shodan
+OpenVAS
+Kali Linux
+Parrot OS
+Autopsy
+FTK
+Maltego
+http
+https
+ftp
+smb
+telnet
+ssh
+rdp
+dns
+icmp
+tcp
+udp
+.exe
+.dll
+.bat
+.ps1
+.vbs
+.jar
+.scr
+.apk
+.bin
+.dat
+base64
+hex
+obfuscated
+encoded
+compressed
+encrypted
+event log
+registry
+prefetch
+shimcache
+amcache
+MFT
+NTFS
+timestamp
+MAC times
+logon
+audit
+access denied
+unauthorized
+failed login
+suspicious
+anomaly
+IOC
+indicator of compromise
+TTP
+MITRE ATT&CK
+tactic
+technique
+procedure
+CreateProcess
+ShellExecute
+WinExec
+system
+exec
+popen
+fork
+spawn
+cmd.exe
+powershell.exe
+bash
+sh
+terminal
+command prompt
+runas
+ProcessBuilder
+subprocess
+os.system
+os.exec
+os.popen
+eval
+compile
+RunOnce
+Run
+Startup
+schtasks
+Task Scheduler
+cron
+autorun
+HKCU
+HKLM
+CurrentVersion
+Services
+AppInit_DLLs
+LoadLibrary
+SetWindowsHookEx
+WMI
+Winlogon
+ActiveSetup
+bootrec
+init.d
+systemd
+launchctl
+IsDebuggerPresent
+CheckRemoteDebuggerPresent
+NtQueryInformationProcess
+VirtualProtect
+SetThreadContext
+SuspendThread
+GetTickCount
+Sleep
+GetSystemTime
+QueryPerformanceCounter
+anti_vm
+anti_sandbox
+anti_debug
+obfuscate
+pack
+encrypt
+xor
+socket
+connect
+bind
+listen
+send
+recv
+curl
+wget
+urllib
+requests
+POST
+GET
+PUT
+Beacon
+reverse shell
+bind shell
+nc
+open
+read
+write
+delete
+remove
+rename
+copy
+move
+os.path
+CreateFile
+ReadFile
+WriteFile
+DeleteFile
+FindFirstFile
+FindNextFile
+file handle
+stream
+buffer
+dump
+exfiltrate
+upload
+download
+keylogger
+GetAsyncKeyState
+GetForegroundWindow
+clipboard
+password
+token
+hashdump
+lsass
+SAM
+NTLM
+mimikatz
+secretsdump
+impersonate
+admin
+elevate
+sudo
+UAC bypass
+heap spray
+ROP chain
+shellcode
+NOP sled
+format string
+race condition
+use-after-free
+double free
+type confusion
